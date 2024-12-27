@@ -16,11 +16,8 @@
     },
     "Outputs": {
         "HelloBucketNameOutput": {
-            "Description": "Bucket name",
-            "Value": "Value to return",
-            "Export": {
-                "Name": "Name of resource to export"
-            }
+            "Description": "Name of the created S3 bucket",
+            "Value": { "Ref": "HelloBucket" }
         }
     }
 }
