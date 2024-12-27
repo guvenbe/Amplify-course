@@ -1,0 +1,26 @@
+{
+    "Resources": {
+        "HelloBucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+                "LifecycleConfiguration": {
+                    "Rules": [
+                        {
+                            "ExpirationInDays": 3,
+                            "Status": "Enabled"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "HelloBucketNameOutput": {
+            "Description": "Bucket name",
+            "Value": "Value to return",
+            "Export": {
+                "Name": "Name of resource to export"
+            }
+        }
+    }
+}
