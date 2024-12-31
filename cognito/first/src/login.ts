@@ -1,6 +1,6 @@
 import { Amplify } from "aws-amplify";
 import config from '../config.json'
-import { signIn } from '@aws-amplify/auth'
+import { signIn, fetchAuthSession } from '@aws-amplify/auth'
 
 Amplify.configure({
     Auth: {
@@ -26,6 +26,9 @@ async function main(){
     )
     console.log('login result:')
     console.log(result)
+    console.log('login session:')
+    const session = await fetchAuthSession();
+    console.log(session)
 }
 
 export async function test(element: HTMLButtonElement){
