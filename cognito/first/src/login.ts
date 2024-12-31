@@ -29,6 +29,9 @@ async function main(){
     console.log('login session:')
     const session = await fetchAuthSession();
     console.log(session)
+    const idToken = session.tokens?.idToken?.toString();
+    console.log('id token: ')
+    console.log(idToken)
 }
 
 export async function test(element: HTMLButtonElement){
