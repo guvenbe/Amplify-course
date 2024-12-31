@@ -11,5 +11,9 @@
   "devDependencies": {
     "typescript": "~5.6.2",
     "vite": "^6.0.5"
+  },
+  "dependencies": {
+    "@aws-amplify/auth": "^6.9.0",
+    "aws-amplify": "^6.11.0"
   }
 }
