@@ -1,0 +1,1 @@
+aws cognito-idp admin-set-user-password --user-pool-id xxxxx --username xxxxx --password "xxxxx"  --permanent
