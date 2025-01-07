@@ -3,6 +3,7 @@ import config from '../config.json'
 import { signIn, fetchAuthSession } from '@aws-amplify/auth'
 import { CognitoIdentityClient } from '@aws-sdk/client-cognito-identity';
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
+import { ListObjectsV2Command, S3Client } from "@aws-sdk/client-s3";
 
 Amplify.configure({
     Auth: {
@@ -66,13 +67,30 @@ async function main(){
     if (idToken) {
         console.log('Getting temporary credentials for authenticated user: ')
         const authCredentials = await generateTemporaryCredentials(idToken)
-        console.log(authCredentials)
+        const bucketFiles = await listBucketContents(authCredentials)
+        console.log(bucketFiles)
     }
     console.log('Getting temporary credentials for guest user: ')
     const guestCredentials = await generateTemporaryGuestCredentials()
-    console.log(guestCredentials)
+    try {
+        await listBucketContents(guestCredentials)
+    } catch (error: any) {
+        console.log(error.message)
+    }
 }
 
 export async function test(element: HTMLButtonElement){
     element.addEventListener('click', () => main())
 }
+
+async function listBucketContents(credentials: any){
+    const client = new S3Client({
+      credentials: credentials,
+      region: config.aws.region
+    })
+    const bucketName = 'cool-photos13674';
+    const result = await client.send(new ListObjectsV2Command({
+      Bucket: bucketName
+    }))
+    return result;
+  }
