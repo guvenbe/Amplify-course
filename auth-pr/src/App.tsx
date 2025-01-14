@@ -1,5 +1,5 @@
 import './App.css'
-import { Auth } from './Auth1'
+import { Auth } from './Auth2'
 
 import { Amplify } from 'aws-amplify';
 import outputs from "../amplify_outputs.json";
