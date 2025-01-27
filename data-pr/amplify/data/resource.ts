@@ -7,8 +7,7 @@ const schema = a.schema({
       rating: a.integer()
     })
     .authorization((allow) => [
-      allow.guest(),
-      allow.authenticated()
+      allow.publicApiKey()
     ]),
   Task: a
     .model({
@@ -22,6 +21,6 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: 'iam',
+    defaultAuthorizationMode: 'apiKey',
   },
 });

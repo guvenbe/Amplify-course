@@ -13,7 +13,7 @@ export function MeetingPlaces() {
 
     useEffect(() => {
         placesClient.observeQuery({
-            authMode: 'identityPool'
+            authMode: 'apiKey'
         }).subscribe({
             next: (data) => setMeetingPlaces([...data.items])
         });
@@ -23,7 +23,7 @@ export function MeetingPlaces() {
         placesClient.create({
             location: window.prompt('Place location')!
         }, {
-            authMode: 'identityPool'
+            authMode: 'apiKey'
         })
     }
 
