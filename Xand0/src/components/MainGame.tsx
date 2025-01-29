@@ -44,6 +44,7 @@ function MainGame(props: { gameId: string }) {
             }
         }).subscribe({
             next: (data) => {
+                console.log(data)
                 setGame(data)
             },
             error: (err) => {
@@ -172,6 +173,9 @@ function MainGame(props: { gameId: string }) {
             return;
         }
         const newGameState = [...gameState]
+        if (game) {
+            game.lastMoveBy = side;
+        }
 
         if (side !== 'notSetYet') {
             newGameState[row][col] = side
