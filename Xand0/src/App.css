@@ -6,11 +6,11 @@
 }
 
 button {
-  width:  70px;
-  height: 70px;
-  min-width: 70px;
-  min-height: 70px;
-  line-height: 70px; /* Ensures vertical alignment */
+  width:  80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
+  line-height: 80px; /* Ensures vertical alignment */
   display: inline-block;
   box-sizing: border-box;
   text-align: center; /* Ensures text is centered */
