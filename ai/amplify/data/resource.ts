@@ -1,5 +1,6 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 import { getWeather } from '../functions/weather/resource';
+import { generateImage } from '../functions/generateImage/resource';
 
 
 const schema = a.schema({
@@ -37,6 +38,14 @@ const schema = a.schema({
       instructions: a.string(),
     })
   ).authorization((allow) => allow.authenticated()),
+  generateImage: a
+    .query()
+    .arguments({
+      prompt: a.string(),
+    })
+    .returns(a.string().array())
+    .handler(a.handler.function(generateImage))
+    .authorization((allow) => [allow.authenticated()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
