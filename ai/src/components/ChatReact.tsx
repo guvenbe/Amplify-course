@@ -10,7 +10,7 @@ function ChatReact() {
     const sendMessage = chat[1]
 
     return <main>
-        <h1>Hello to the awesome AI Chat!! - With Amplify React components</h1><br />
+        <h2>Hello to the awesome AI Chat!! - With Amplify React components</h2><br />
         <AIConversation
             messages={messages}
             handleSendMessage={sendMessage}
